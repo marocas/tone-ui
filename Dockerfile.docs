@@ -1,0 +1,20 @@
+FROM node:15.14.0-alpine as BUILDER
+WORKDIR /app
+
+RUN apk add --update --no-cache curl py-pip make g++
+
+COPY package.json yarn.lock ./
+RUN yarn
+
+COPY . .
+RUN yarn build:storybook
+
+
+FROM nginx:1.9.15-alpine
+RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+
+WORKDIR /etc/nginx/conf.d
+RUN sed -i -e '4s/.*/add_header Access-Control-Allow-Origin *;/gI' ./default.conf
+RUN sed -i -e '7s/.*/location ~ ^\/(ready|live){return 200 "Running";add_header Content-Type text\/plain;}/gI' ./default.conf
+
+COPY --from=BUILDER /app/storybook-static /usr/share/nginx/html

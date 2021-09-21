@@ -1,0 +1,29 @@
+$font-size-base: 16px;
+
+$headings-margin-bottom: $spacer / 2 !default;
+
+// Font Weights
+$regular: 400;
+$medium: 500;
+$semi-bold: 600;
+$bold: 700;
+$extra-bold: 800;
+
+$font-weight: (
+  'regular': $regular,
+  'medium': $medium,
+  'semi-bold': $semi-bold,
+  'bold': $bold,
+  'extra-bold': $extra-bold,
+);
+
+$font-family-icons: 'td-icons';
+$font-family-gilroy: 'Gilroy', arial, futura;
+$font-family-inter: 'Inter', helvetica, arial;
+$font-weight-base: $regular;
+
+$font-family: (
+  'icons': $font-family-icons,
+  'gilroy': $font-family-gilroy,
+  'inter': $font-family-inter,
+);

@@ -1,0 +1,53 @@
+/* Mixin for exception rules used by components themes (ex: button, link, accordeon) */
+/*
+   Param1: the component color schemes,
+   Param2: (optional) in case the component needed to add new colors to the global themes,
+           default is the default global themes
+*/
+@mixin theme-generator($ui-kit-color-schemes, $modified-theme: $color-themes) {
+  @each $name, $value in $bg-colors {
+    [class*="-bg--#{$name}"]:not(section) {
+      $color-theme: map-get($bg-color-schemes, $name);
+      $theme-scheme: map-merge(map-get($color-themes, $color-theme), map-get($modified-theme, $color-theme));
+
+      @each $elem, $elem-schema in $ui-kit-color-schemes {
+        $elem-theme: map-get($elem-schema, $color-theme);
+
+        .#{$elem} {
+          @each $variant, $states in $elem-theme {
+            &.-#{$variant} {
+              @each $state, $props in $states {
+                $elem-state: if(index($state, "default"), "", "-#{$state}-");
+
+                @if ($state == 'icon') {
+                  & + [class^="icon-"] {
+                    @each $prop, $role in $props {
+                      $color-value: map-get($theme-scheme, nth($role, 1));
+                      $colorRole: var(--color--#{map-get($theme-scheme, $role)});
+
+                      -#{$elem-state}-#{$prop}: $colorRole;
+                     }
+                  }
+                } @else {
+                  @each $prop, $role in $props {
+                    $color-value: map-get($theme-scheme, nth($role, 1));
+                    $colorRole: var(--color--#{map-get($theme-scheme, $role)});
+
+                    @if (length($role) > 1) {
+                      $color-value: map-get($tdColors, map-get($theme-scheme, nth($role, 1)));
+                      $opacity: nth($role, 2);
+                      $color-value: rgba($color-value, $opacity);
+                      -#{$elem-state}-#{$prop}: #{$color-value};
+                    } @else {
+                      -#{$elem-state}-#{$prop}: $colorRole;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

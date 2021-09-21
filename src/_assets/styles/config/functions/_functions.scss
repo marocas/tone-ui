@@ -1,0 +1,57 @@
+@function palette($palette, $tone: 'base') {
+  @return map-get($palette, $tone);
+}
+
+/// Remove the unit of a length
+/// @param {Number} $number - Number to remove unit from
+/// @return {Number} - Unitless number
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+@function pxrem($pixels, $context: nth($font-size-base, 1)) {
+  @return #{strip-unit($pixels)/strip-unit($context)}rem;
+}
+
+@function calc-percent($val) {
+  @return #{100%/$val};
+}
+
+/// Get color by variant
+/// @param {Palette} $palette - Color palette to fetch from
+/// @param {$key} $key - Key is the name of the color
+/// @param {Variant} $variant - Is the 'primary' or 'alt' color
+@function getColor($palette, $key: 'blue', $variant: 'primary') {
+  @if map-has-key($palette, $key) {
+    $result: '';
+    @each $name, $value in $palette {
+      @if ($name == $key) {
+        $name: nth($value, 1);
+        @if ($name == 'white') {
+          @if ($variant == 'primary' or $variant == 1) {
+            $result: var(--color--#{nth($value, 2)});
+          } @else if ($variant == 'alt' or $variant == 2 ) {
+            $result: var(--color--#{nth($value, 3)});
+          } @else {
+            @error "The Color Variant '#{$variant}' is not defined in the color palette...";
+          }
+        } @else {
+          @if ($variant == 'primary' or $variant == 1) {
+            $result: var(--color--#{$name}-#{nth($value, 2)});
+          } @else if ($variant == 'alt' or $variant == 2 ) {
+            $result: var(--color--#{$name}-#{nth($value, 3)});
+          } @else {
+            @error "The Color Variant '#{$variant}' is not defined in the color palette...";
+          }
+        }
+      }
+    }
+    @return $result;
+  } @else {
+      @warn "The Color '#{$key}' is not defined in the color palette..."
+  }
+}

@@ -1,43 +1,108 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@td/tone-ui",
+  "version": "0.4.6",
+  "private": false,
+  "license": "MIT",
+  "engines": {
+    "node": "15.14.0"
+  },
+  "scripts": {
+    "start": "start-storybook -s static -p ${PORT:=8000}",
+    "build": "yarn clean && yarn generate:build && yarn generate:types && yarn cp:package && yarn cp:styles",
+    "build:storybook": "build-storybook -s ./static",
+    "generate:build": "babel src --extensions \".ts,.tsx\" -d lib",
+    "generate:types": "tsc",
+    "clean": "rimraf lib",
+    "cp:package": "cp package.json ./lib",
+    "cp:styles": "copyfiles -u 1 \"./src/**/*.{scss,ttf,eot,br,woff,svg,png,jpg}\" ./lib",
+    "test": "echo \"Tests runned succcessfuly\"",
+    "lint": "eslint './**/*.{js,ts,tsx,json}' --quiet --fix",
+    "cm": "npx cz",
+    "prepare": "husky install"
+  },
   "dependencies": {
+    "@babel/preset-env": "^7.15.6",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.15.0",
+    "@reduxjs/toolkit": "^1.6.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "@types/jest": "^26.0.15",
-    "@types/node": "^12.0.0",
+    "@types/node": "^16.9.4",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "bootstrap": "^4.5.3",
+    "clsx": "^1.1.1",
+    "copyfiles": "^2.4.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "enzyme-to-json": "^3.6.2",
+    "formik": "^2.2.9",
+    "immer": "^9.0.6",
+    "node-sass": "^5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-query": "^3.24.3",
+    "react-redux": "^7.2.5",
     "react-scripts": "4.0.3",
+    "react-slick": "^0.28.1",
+    "react-svg": "^14.0.13",
+    "rimraf": "^3.0.2",
     "typescript": "^4.1.2",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "wsrun": "^5.2.4"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.5",
+    "@storybook/addon-actions": "^6.3.8",
+    "@storybook/addon-essentials": "^6.3.8",
+    "@storybook/addon-knobs": "^6.3.1",
+    "@storybook/addon-links": "^6.3.8",
+    "@storybook/node-logger": "^6.3.8",
+    "@storybook/preset-create-react-app": "^3.2.0",
+    "@storybook/react": "^6.3.8",
+    "@whitespace/storybook-addon-html": "^5.0.0",
+    "babel-preset-minify": "^0.5.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.26.0",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
+    "prettier": "^2.4.1"
+  },
+  "peerDependencies": {
+    "@types/react": "^17.0.0",
+    "react": "^17.0.2"
+  },
+  "lint-staged": {
+    "./**/*.{js,ts,tsx,json}": "yarn lint"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "**/*.stories.*"
+        ],
+        "rules": {
+          "import/no-anonymous-default-export": "off"
+        }
+      }
     ]
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "last 4 version"
     ],
     "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+      "last 4 version"
     ]
   }
 }

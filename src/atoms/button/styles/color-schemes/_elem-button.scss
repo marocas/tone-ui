@@ -1,0 +1,132 @@
+$button-light-scheme: (
+  "primary": (
+    "default": (
+      "color": "text-secondary",
+      "bg-color": "primary",
+      "brd-color": "primary",
+    ),
+    "hover": (
+      "color": "text-secondary",
+      "bg-color": "secondary",
+      "brd-color": "secondary",
+    ),
+    "disabled": (
+      "color": "text-secondary",
+      "bg-color": "tertiary",
+      "brd-color": "tertiary",
+    )
+  ),
+
+  "secondary": (
+    "default": (
+      "color": "primary",
+      "bg-color": "transparent",
+      "brd-color": "primary",
+    ),
+    "hover": (
+      "color": "text-secondary",
+      "bg-color": "secondary",
+      "brd-color": "secondary",
+    ),
+    "disabled": (
+      "color": "text-secondary",
+      "bg-color": "tertiary",
+      "brd-color": "tertiary",
+    )
+  )
+);
+
+$button-dark-scheme: (
+  "primary": (
+    "default": (
+      "color": "text-tertiary",
+      "bg-color": "primary",
+      "brd-color": "primary",
+    ),
+    "hover": (
+      "color": "primary",
+      "bg-color": "secondary",
+      "brd-color": "secondary",
+    ),
+    "disabled": (
+      "color": "text-primary",
+      "bg-color": "tertiary",
+      "brd-color": "tertiary",
+    )
+  ),
+
+  "secondary": (
+    "default": (
+      "color": "primary",
+      "bg-color": "transparent",
+      "brd-color": "primary",
+    ),
+    "hover": (
+      "color": "text-tertiary",
+      "bg-color": "primary",
+      "brd-color": "primary",
+    ),
+    "disabled": (
+      "color": "primary",
+      "bg-color": "tertiary",
+      "brd-color": "tertiary",
+    )
+  )
+);
+
+$button-medium-scheme: (
+  "primary": (
+    "default": (
+      "color": "text-secondary",
+      "bg-color": "primary",
+      "brd-color": "primary",
+    ),
+    "hover": (
+      "color": "text-secondary",
+      "bg-color": "secondary",
+      "brd-color": "secondary",
+    ),
+    "disabled": (
+      "color": "text-secondary",
+      "bg-color": "tertiary",
+      "brd-color": "tertiary",
+    )
+  ),
+
+  "secondary": (
+    "default": (
+      "color": "primary",
+      "bg-color": "transparent",
+      "brd-color": "primary",
+    ),
+    "hover": (
+      "color": "text-secondary",
+      "bg-color": "primary",
+      "brd-color": "primary",
+    ),
+    "disabled": (
+      "color": "text-secondary",
+      "bg-color": "tertiary",
+      "brd-color": "tertiary",
+    )
+  )
+);
+
+$button-color-schemes: (
+  "light": (
+    "primary": map-get($map: $button-light-scheme, $key: "primary"),
+    "secondary": map-get($map: $button-light-scheme, $key: "secondary")
+  ),
+  "dark": (
+    "primary": map-get($map: $button-dark-scheme, $key: "primary"),
+    "secondary": map-get($map: $button-dark-scheme, $key: "secondary")
+  ),
+  "medium": (
+    "primary": map-get($map: $button-medium-scheme, $key: "primary"),
+    "secondary": map-get($map: $button-medium-scheme, $key: "secondary")
+  )
+);
+
+$button-ui-kit-color-schemes: (
+  "button": $button-color-schemes,
+);

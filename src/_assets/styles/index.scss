@@ -1,0 +1,34 @@
+// Bootstrap vendor
+@import 'vendor';
+// Application
+@import 'normalize';
+@import 'root';
+
+body {
+  font-size: $font-size-base;
+  font-family: $font-family-inter;
+  font-weight: $regular;
+  line-height: 1.18;
+  scroll-behavior: smooth;
+
+  color: getColor($colorsPalette, 'deep-purple', 'primary');
+  background-color: var(--color--grey-200);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main.main {
+  min-height: 50vh;
+  position: relative;
+  z-index: $z-mainApp;
+}
+
+.container-fluid {
+  max-width: var(--breakpoint-xxl);
+}
+
+// Chatbot
+iframe#q-messenger-frame {
+  bottom: pxrem(40) !important;
+}

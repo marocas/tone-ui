@@ -1,0 +1,14 @@
+{
+  "icon": "ui-caretright",
+  "side": "left",
+  "type": "button",
+  "label": "learn more",
+  "variant": "-primary",
+  "external": true,
+  "url_external": "#linkTo_3697",
+  "url_internal": "#linkTo",
+  "css_classes": "",
+  "css_id": "",
+  "trigger": "",
+  "disabled": false
+}

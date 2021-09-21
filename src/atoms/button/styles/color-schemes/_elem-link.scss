@@ -1,0 +1,96 @@
+$link-light-scheme: (
+  "primary": (
+    "default": (
+      "color": "primary",
+    ),
+    "hover": (
+      "color": "text-secondary",
+    ),
+    "disabled": (
+      "color": "text-secondary",
+    )
+  ),
+
+  "secondary": (
+    "default": (
+      "color": "primary",
+    ),
+    "hover": (
+      "color": "text-secondary",
+    ),
+    "disabled": (
+      "color": "text-secondary",
+    )
+  )
+);
+
+$link-dark-scheme: (
+  "primary": (
+    "default": (
+      "color": "text-primary",
+    ),
+    "hover": (
+      "color": "primary",
+    ),
+    "disabled": (
+      "color": "text-primary",
+    )
+  ),
+
+  "secondary": (
+    "default": (
+      "color": "text-primary",
+    ),
+    "hover": (
+      "color": "primary",
+    ),
+    "disabled": (
+      "color": "primary",
+    )
+  )
+);
+
+$link-medium-scheme: (
+  "primary": (
+    "default": (
+      "color": "text-primary",
+    ),
+    "hover": (
+      "color": "text-secondary",
+    ),
+    "disabled": (
+      "color": "text-secondary",
+    )
+  ),
+
+  "secondary": (
+    "default": (
+      "color": "text-primary",
+    ),
+    "hover": (
+      "color": "text-secondary",
+    ),
+    "disabled": (
+      "color": "text-secondary",
+    )
+  )
+);
+
+$link-color-schemes: (
+  "light": (
+    "primary": map-get($map: $link-light-scheme, $key: "primary"),
+    "secondary": map-get($map: $link-light-scheme, $key: "secondary")
+  ),
+  "dark": (
+    "primary": map-get($map: $link-dark-scheme, $key: "primary"),
+    "secondary": map-get($map: $link-dark-scheme, $key: "secondary")
+  ),
+  "medium": (
+    "primary": map-get($map: $link-medium-scheme, $key: "primary"),
+    "secondary": map-get($map: $link-medium-scheme, $key: "secondary")
+  )
+);
+
+$link-ui-kit-color-schemes: (
+  "link": $link-color-schemes,
+);

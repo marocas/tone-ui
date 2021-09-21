@@ -1,0 +1,24 @@
+// Spacing
+//
+// Control the default styling of most elements by modifying these variables.
+// Mostly focused on spacing.
+// You can add more entries to the $spacers map, should you need more variation.
+$spacer: 1rem;
+$spacers: ();
+$spacers: map-merge(
+  (
+    10: ($spacer * 10),
+    9: ($spacer * 9),
+    8: ($spacer * 8),
+    7: ($spacer * 7),
+    6: ($spacer * 6),
+    5: ($spacer * 5),
+    4: ($spacer * 4),
+    3: ($spacer * 3),
+    2: ($spacer * 2),
+    1: $spacer,
+    half: ($spacer / 2),
+    0: 0,
+  ),
+  $spacers
+);

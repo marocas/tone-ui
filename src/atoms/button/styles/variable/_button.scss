@@ -1,0 +1,17 @@
+// BUTTONS
+$borders: ('top', 'right', 'bottom', 'left');
+$button_variations: (
+  'dark': 'blue',
+  'light': 'white',
+);
+
+$btnColors: (
+  'teal':        ('teal'   '600' '700'),
+  'white':       ('white'  'white' 'grey'),
+  'yellow':      ('yellow' '600' '700'),
+  'purple':      ('purple' '600' '500'),
+  'deep-purple': ('purple' '800' '700'),
+);
+
+$prm-color: getColor($btnColors, 'deep-purple', 'primary');
+$alt-color: getColor($btnColors, 'white', 'alt');

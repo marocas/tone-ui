@@ -1,0 +1,21 @@
+
+$success-colors: (
+  "primary": "success-light",
+  "secondary": "success-dark"
+);
+
+$warning-colors: (
+  "primary": "warning-light",
+  "secondary": "warning-dark"
+);
+
+$error-colors: (
+  "primary": "error-light",
+  "secondary": "error-dark"
+);
+
+$roles-colors: (
+  "success": $success-colors,
+  "warning": $warning-colors,
+  "error": $error-colors
+);

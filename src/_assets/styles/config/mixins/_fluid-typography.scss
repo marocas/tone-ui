@@ -1,0 +1,3 @@
+@function fluidType($min-screen, $max-screen, $min-value, $max-value, $pr: 0) {
+  @return calc-interpolation($min-screen, $max-screen, $min-value, $max-value, $pr);
+}

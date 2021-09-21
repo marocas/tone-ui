@@ -1,0 +1,14 @@
+@function value($lh) {
+  @if $lh == 1.5 {
+    @return 1.5;
+  } @else {
+    @return pxrem($lh);
+  }
+}
+
+@mixin text-style($ff, $weight, $font, $lh: 1.5) {
+  font-size: pxrem($font);
+  font-family: map-get($font-family, $ff);
+  font-weight: map-get($font-weight, $weight);
+  line-height: value($lh);
+}

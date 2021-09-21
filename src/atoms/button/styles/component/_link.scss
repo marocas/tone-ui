@@ -1,0 +1,57 @@
+@include theme-generator($link-ui-kit-color-schemes);
+
+.link {
+  @include text-style('inter', 'semi-bold', 14, 20);
+  color: var(--color);
+  letter-spacing: pxrem(0.4);
+  text-decoration: none;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  position: relative;
+  transition: .1s all ease-out;
+
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: all 0.3s linear;
+  }
+
+  &:hover,
+  &:focus {
+    &:after {
+      height: pxrem(2);
+      width: 100%;
+      background-color: var(--color);
+    }
+
+    [class^="icon-"] {
+      color: inherit;
+      transform: translate(pxrem(2), -50%);
+      transition: all 0.1s linear;
+    }
+  }
+
+  [class^="icon-"] {
+    color: inherit;
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+
+  @each $key in ('left', 'right') {
+    &.-icon-#{$key} {
+      margin-#{$key}: pxrem(30);
+
+      [class^="icon-"] {
+        #{$key}: pxrem(-30);
+      }
+    }
+  }
+}

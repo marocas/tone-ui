@@ -1,0 +1,81 @@
+$light-theme: (
+  // Common theme
+  "primary":        "purple-600",
+  "secondary":      "purple-500",
+  "tertiary":       "purple-300",
+ // text colors theme
+  "text-primary":   "purple-800",
+  "text-secondary": "white",
+  "text-tertiary":  "white",
+  "text-links":     "purple-600",
+  "dividers":       "grey-300",
+ // background colors theme
+  "bg-primary":     "white",
+  "bg-secondary":   "grey-200",
+  "bg-tertiary":   "grey-100",
+  "transparent":    "transparent",
+  // Roles
+  "success-primary": map-get(map-get($roles-colors, "success"), "primary"),
+  "success-secondary": map-get(map-get($roles-colors, "success"), "secondary"),
+  "warning-primary": map-get(map-get($roles-colors, "warning"), "primary"),
+  "warning-secondary": map-get(map-get($roles-colors, "warning"), "secondary"),
+  "error-primary": map-get(map-get($roles-colors, "error"), "primary"),
+  "error-secondary": map-get(map-get($roles-colors, "error"), "secondary"),
+);
+
+$medium-theme: (
+  // Common theme
+  "primary":        "purple-800",
+  "secondary":      "purple-700",
+  "tertiary":       "purple-300",
+  // text colors theme
+  "text-primary":   "purple-800",
+  "text-secondary": "white",
+  "text-tertiary":  "purple-600",
+  "text-links":     "purple-600",
+  "dividers":       "purple-300",
+  // background colors theme
+  "bg-primary":     "white",
+  "bg-secondary":   "grey-200",
+  "bg-tertiary":   "grey-100",
+  "transparent":    "transparent",
+  // Roles
+  "success-primary": map-get(map-get($roles-colors, "success"), "primary"),
+  "success-secondary": map-get(map-get($roles-colors, "success"), "secondary"),
+  "warning-primary": map-get(map-get($roles-colors, "warning"), "primary"),
+  "warning-secondary": map-get(map-get($roles-colors, "warning"), "secondary"),
+  "error-primary": map-get(map-get($roles-colors, "error"), "primary"),
+  "error-secondary": map-get(map-get($roles-colors, "error"), "secondary"),
+);
+
+$dark-theme: (
+  // Common theme
+  "primary":        "white",
+  "secondary":      "purple-500",
+  "tertiary":       "purple-300",
+  "quaternary":     "teal-600",
+  "quinary":        "teal-700",
+  // text colors theme
+  "text-primary":   "white",
+  "text-secondary": "purple-800",
+  "text-tertiary":  "purple-600",
+  "text-links":     "teal-600",
+  "dividers":       "grey-700",
+  // background colors theme
+  "bg-primary":     "white",
+  "bg-secondary":   "grey",
+  "transparent":    "transparent",
+  // Roles
+  "success-primary": map-get(map-get($roles-colors, "success"), "primary"),
+  "success-secondary": map-get(map-get($roles-colors, "success"), "secondary"),
+  "warning-primary": map-get(map-get($roles-colors, "warning"), "primary"),
+  "warning-secondary": map-get(map-get($roles-colors, "warning"), "secondary"),
+  "error-primary": map-get(map-get($roles-colors, "error"), "primary"),
+  "error-secondary": map-get(map-get($roles-colors, "error"), "secondary"),
+);
+
+$color-themes: (
+  "light":    $light-theme,
+  "medium":   $medium-theme,
+  "dark":     $dark-theme,
+);

@@ -1,0 +1,79 @@
+image: node:15.14.0-alpine
+
+Build phase:
+  stages:
+    Install dependencies:
+      steps:
+        - apk add git
+        - npm set-script prepare ""
+        - yarn
+
+    Test:
+      when:
+        - PR
+      steps:
+        - yarn test
+
+    Code Styling:
+      when:
+        - PR
+      steps:
+        - yarn lint
+
+    Build Docs:
+      type: docker_build
+      app_images:
+        - dockerfile: Dockerfile.docs
+          app_name: td-creac
+    
+    Publish Docker Image:
+      when:
+        - master
+        - staging
+        - ^v[0-9][0-9]*\.0*[0-9][0-9]*\.0*[0-9][0-9]*
+      type: docker_push
+
+    Build:
+      when:
+        - ^v[0-9][0-9]*\.0*[0-9][0-9]*\.0*[0-9][0-9]*
+      steps:
+        - yarn build
+
+    Publish npm:
+      type: npm_push
+      when:
+        - ^v[0-9][0-9]*\.0*[0-9][0-9]*\.0*[0-9][0-9]*
+      steps:
+        - echo "registry=${REGISTRY_NPM_PUSH}" >> /root/.npmrc
+        - echo "_auth=${REGISTRY_CREDENTIALS_BASE64}" >> /root/.npmrc
+        - echo "email=${REGISTRY_EMAIL}" >> /root/.npmrc
+        - echo "\nunsafe-perm=true" >> /root/.npmrc
+        - npm publish ./lib
+
+Deploy phase:
+  stg:
+    when:
+      - staging
+    deploy mode: automatic
+    stages:
+      Deploy STG:
+        type: deploy_kubernetes
+        app_name:
+          - td-creac
+
+  qa:
+    when:
+      - master
+    deploy mode: automatic
+    stages:
+      Deploy QA:
+        type: deploy_kubernetes
+
+Notifications:
+  - channels:
+      - creative_frontend_cr
+    status:
+      - FAILURE
+      - BACK_TO_NORMAL
+      - SUCCESS
+      - ABORTED

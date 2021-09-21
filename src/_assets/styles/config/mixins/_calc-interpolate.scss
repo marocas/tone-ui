@@ -1,0 +1,33 @@
+// REF: https://www.madebymike.com.au/writing/fluid-type-calc-examples/#heading-fluid-type-in-sass
+@mixin interpolate($properties, $min-screen, $max-screen, $min-value, $max-value) {
+  & {
+    @each $property in $properties {
+      #{$property}: $min-value;
+    }
+
+    @media screen and (min-width: $min-screen) {
+      @each $property in $properties {
+        #{$property}: calc-interpolation($min-screen, $max-screen, $min-value, $max-value);
+      }
+    }
+
+    @media screen and (min-width: $max-screen) {
+      @each $property in $properties {
+        #{$property}: $max-value;
+      }
+    }
+  }
+}
+
+@function calc-interpolation($min-screen, $max-screen, $min-value, $max-value, $pr) {
+  $vw: ($max-value - $min-value) / ($max-screen - $min-screen);
+  $pr: $pr / strip-unit($min-value - $vw * $min-screen) * 100;
+  $px: $min-value - $vw * $min-screen - $pr;
+
+  $sign: '+';
+  @if ($px < 0) {
+    $sign: '-';
+    $px: abs($px);
+  }
+  @return calc(#{$vw * 100}vw #{$sign} #{$px});
+}

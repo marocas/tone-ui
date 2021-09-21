@@ -1,0 +1,147 @@
+// color system
+$teal-100:     #e3fcfa;
+$teal-200:     #c7f8f4;
+$teal-300:     #9df3ec;
+$teal-400:     #73efe4;
+$teal-500:     #57ebdf;
+$teal-600:     #3ae8d9;
+$teal-700:     #18ccbd;
+$teal-800:     #14a79b;
+
+$grey-100:     #f9fafa;
+$grey-200:     #f4f5f6;
+$grey-300:     #e7e9eb;
+$grey-400:     #d8dadd;
+$grey-500:     #b4bbc2;
+$grey-600:     #959ea8;
+$grey-700:     #74808c;
+$grey-800:     #5c636b;
+
+$yellow-100:   #fffbed;
+$yellow-200:   #fff4c8;
+$yellow-300:   #ffeda4;
+$yellow-400:   #ffe680;
+$yellow-500:   #ffd737;
+$yellow-600:   #ffcc00;
+$yellow-700:   #edbd00;
+$yellow-800:   #dbaf00;
+
+$purple-100:   #f2e9fe;
+$purple-200:   #e6d3fe;
+$purple-300:   #bf91fc;
+$purple-400:   #994ffa;
+$purple-500:   #8023f9;
+$purple-600:   #5405bd;
+$purple-700:   #360379;
+$purple-800:   #180136;
+
+$white:        #ffffff;
+
+$success-light:#1fc78f;
+$success-dark: #00a870;
+
+$warning-light:#ffcc00;
+$warning-dark: #edbd00;
+
+$error-light:  #ff4538;
+$error-dark:   #b80c00;
+
+$transparent:  rgba(0, 0, 0, 0);
+
+$tdColors: (
+  // color
+  'teal-100':      $teal-100,
+  'teal-200':      $teal-200,
+  'teal-300':      $teal-300,
+  'teal-400':      $teal-400,
+  'teal-500':      $teal-500,
+  'teal-600':      $teal-600,
+  'teal-700':      $teal-700,
+  'teal-800':      $teal-800,
+  // color
+  'grey-100':      $grey-100,
+  'grey-200':      $grey-200,
+  'grey-300':      $grey-300,
+  'grey-400':      $grey-400,
+  'grey-500':      $grey-500,
+  'grey-600':      $grey-600,
+  'grey-700':      $grey-700,
+  'grey-800':      $grey-800,
+  // color
+  'yellow-100':    $yellow-100,
+  'yellow-200':    $yellow-200,
+  'yellow-300':    $yellow-300,
+  'yellow-400':    $yellow-400,
+  'yellow-500':    $yellow-500,
+  'yellow-600':    $yellow-600,
+  'yellow-700':    $yellow-700,
+  'yellow-800':    $yellow-800,
+  // color
+  'purple-100':    $purple-100,
+  'purple-200':    $purple-200,
+  'purple-300':    $purple-300,
+  'purple-400':    $purple-400,
+  'purple-500':    $purple-500,
+  'purple-600':    $purple-600,
+  'purple-700':    $purple-700,
+  'purple-800':    $purple-800,
+  // role
+  'success-dark':  $success-dark,
+  'success-light': $success-light,
+  // role
+  'error-dark':    $error-dark,
+  'error-light':   $error-light,
+  // role
+  'warning-dark':  $warning-dark,
+  'warning-light': $warning-light,
+  // background
+  'white':         $white,
+  // background
+  'transparent':   $transparent,
+);
+
+$primaryColors: (
+  'teal':        ('teal'   '600' '700'),
+  'grey':        ('grey'   '200' '300'),
+  'yellow':      ('yellow' '600' '700'),
+  'purple':      ('purple' '600' '500'),
+  'deep-purple': ('purple' '800' '700'),
+);
+
+$altColors: (
+  'teal':   ('teal'   '600' '700'),
+  'yellow': ('yellow' '600' '700'),
+  'white':  ('white'  'white' 'white'),
+);
+
+$colorsPalette: (
+  'teal':        ('teal'        nth(map-get($altColors, 'teal'), 2) nth(map-get($altColors, 'teal'), 3)),
+  'grey':        ('grey'        nth(map-get($primaryColors, 'grey'), 2) nth(map-get($primaryColors, 'grey'), 3)),
+  'purple':      ('purple'      nth(map-get($primaryColors, 'purple'), 2) nth(map-get($primaryColors, 'purple'), 3)),
+  'deep-purple': ('purple'      nth(map-get($primaryColors, 'deep-purple'), 2) nth(map-get($primaryColors, 'deep-purple'), 3)),
+  'yellow':      ('yellow'      nth(map-get($altColors, 'yellow'), 2) nth(map-get($altColors, 'yellow'), 3)),
+  'white':       ('white'       nth(map-get($altColors, 'white'), 2) nth(map-get($altColors, 'white'), 3)),
+  'transparent': ('transparent' 'transparent' 'transparent'),
+);
+
+$roleColors: (
+  'success': ('light' 'dark'),
+  'warning': ('light' 'dark'),
+  'error':   ('light' 'dark'),
+);
+
+// TODO: remove when all pallets are replaced
+$palettes: (
+  'teal':         #4bc3c9,
+  'grey':         #9b9b9b,
+  'black':        #000000,
+  'purple':       #6a30bb,
+  'orange':       #ff6300,
+  'bluegrey':     #6b748c,
+  'darkblue':     #172241,
+  'lightblue':    #3699d1,
+  'blueblack':    #111a33,
+  'white':        #ffffff,
+  'lightgrey':    #f5f5f5,
+  'transparent':  rgba(0, 0, 0, 0),
+);
